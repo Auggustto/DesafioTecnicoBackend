@@ -42,9 +42,6 @@ pipeline {
     }
     // Garante que os containers serão derrubados mesmo em caso de falha
     post {
-        always {
-            sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
-        }
         success {
             slackSend(channel: "${SLACK_CHANNEL}", color: 'good', message: "Pipeline '${env.JOB_NAME} [${env.BUILD_NUMBER}]' foi bem-sucedido! :white_check_mark:")
         }
@@ -52,6 +49,7 @@ pipeline {
             slackSend(channel: "${SLACK_CHANNEL}", color: 'danger', message: "Pipeline '${env.JOB_NAME} [${env.BUILD_NUMBER}]' falhou. :x:")
         }
         always {
+            sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
             slackSend(channel: "${SLACK_CHANNEL}", color: 'warning', message: "Pipeline '${env.JOB_NAME} [${env.BUILD_NUMBER}]' terminou com status: ${currentBuild.currentResult}.")
         }
     }
