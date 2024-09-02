@@ -10,14 +10,14 @@ pipeline {
     stages {
 
         // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
-        stages('Checkout') {
+        stage('Checkout') {
             steps {
                 git curl: 'https://github.com/Auggustto/DesafioTecnicoBackend'
             }
         }
 
         // Construindo as imagens e subindo os containers
-        stages('Build and Start Containers') {
+        stage('Build and Start Containers') {
             steps{
                 script {
                     sh 'docker-compose.yml -f $DOCKER_COMPOSE_FILE up --build -d'
@@ -26,14 +26,14 @@ pipeline {
         }
 
         // Executa os testes dentro do container
-        stages('Run tests') {
+        stage('Run tests') {
             steps {
                 sh 'docker-compose -f $DOCKER_COMPOSE_FILE run test'
             }
         }
 
         // Derruba os containers e limpa os recursos
-        stages('Stop and clean Up') {
+        stage('Stop and clean Up') {
 
             steps{
                 sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
