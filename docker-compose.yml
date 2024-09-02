@@ -9,10 +9,8 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "2223:5432"
-    # env_file:
-    #   - ./.env
     volumes:
-      - ./save_db/DesafioTecnicoBackend
+      - ./save_db/DesafioTecnicoBackend:/var/lib/postgresql/data 
     networks:
       - app-network
 
@@ -23,8 +21,6 @@ services:
       - "8000:80"
     environment:
       SQLALCHEMY_DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
-    # env_file:
-    #   - ./.env
     depends_on:
       - postgres
     networks:
