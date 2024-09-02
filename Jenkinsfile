@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
         SLACK_CHANNEL = 'D07KN8GSNJY'
-        // SLACK_CREDENTIAL_ID = credentials('SLACK_TOKEN')
     }
 
     stages {
@@ -12,7 +11,7 @@ pipeline {
         // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git'
+                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git', branch: 'main'
             }
         }
 
