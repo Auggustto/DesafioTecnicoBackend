@@ -1,4 +1,4 @@
-## Resolução do Desafio Técnico Brasilprev – Backend
+## Resolução do Desafio Técnico – Backend
 
 ### Linguagem e Framework Utilizados
 
