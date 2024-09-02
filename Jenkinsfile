@@ -12,7 +12,7 @@ pipeline {
         // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
         stage('Checkout') {
             steps {
-                git curl: 'https://github.com/Auggustto/DesafioTecnicoBackend'
+                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend'
             }
         }
 
