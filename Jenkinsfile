@@ -11,7 +11,8 @@ pipeline {
         // Clona o repositório onde estão o código da aplicação e o arquivo docker-compose.yml
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git'
+                // git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git'
+                checkout([$class: 'GitSCM', branches:[[name: '*/main']], uerRemoteConfigs: [[url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git']]])
             }
         }
 
