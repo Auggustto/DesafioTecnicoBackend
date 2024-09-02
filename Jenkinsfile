@@ -12,7 +12,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git'
-                checkout([$class: 'GitSCM', branches:[[name: '*/main']], uerRemoteConfigs: [[url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git']]])
+                // checkout([$class: 'GitSCM', branches:[[name: '*/main']], uerRemoteConfigs: [[url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git']]])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitHubToken', url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git']])
             }
         }
 
