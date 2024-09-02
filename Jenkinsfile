@@ -3,29 +3,9 @@ pipeline {
 
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
-        SLACK_CHANNEL = 'cypherus.slack.com'
+        SLACK_CHANNEL = 'botjenks'
         SLACK_CREDENTIAL_ID = credentials('SLACK_TOKEN')
     }
-
-    stages {
-        stage('Send Notification to Slack') {
-            steps {
-                script {
-                    def slackApiKey = env.SLACK_CREDENTIAL_ID
-                    
-                    echo "Slack API Key: ${slackApiKey}"
-                    
-                    // Exemplo de chamada para Slack API
-                    sh """
-                    curl -X POST -H 'Content-type: application/json' \
-                    --data '{"text":"Build completed successfully!"}' \
-                    https://slack.com/api/chat.postMessage \
-                    -H "Authorization: Bearer ${slackApiKey}"
-                    """
-                }
-            }
-        }
-
         // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
         stage('Checkout') {
             steps {
