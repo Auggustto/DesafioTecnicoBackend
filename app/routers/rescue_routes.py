@@ -11,13 +11,13 @@ class MetadataRescue(BaseModel):
     rescueValue: float
 
 
-@router_rescue.post("/brasilprev/api/plan/rescue", tags=["Resgate"])
+@router_rescue.post("/api/devel/desafioTecnicoBackend/plan/rescue", tags=["Resgate"])
 def create(metada: MetadataRescue):
     rescue = RescueController()
     return rescue.create_rescue(metada.planId, metada.clientId, metada.rescueValue)
 
 
-@router_rescue.get("/brasilprev/api/plan/rescue/{planId}", tags=["Resgate"])
+@router_rescue.get("/api/devel/desafioTecnicoBackend/plan/rescue/{planId}", tags=["Resgate"])
 def create(planId: str):
     rescue = RescueController()
     return rescue.read_rescue(planId)

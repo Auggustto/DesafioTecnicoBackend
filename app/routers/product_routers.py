@@ -17,24 +17,24 @@ class MetadataProduct(BaseModel):
     timeBetweenRescues : int
 
 
-@router_product.post("/brasilprev/api/product", tags=["Cadastro de produto"])
+@router_product.post("/api/devel/desafioTecnicoBackend/product", tags=["Cadastro de produto"])
 def create(metadata : MetadataProduct):
     
     product = ProductController()
     return product.create_product(metadata.name, metadata.susep, metadata.expirationDate, metadata.minValueInitialContribution, metadata.minValueExtraContribution, metadata.entryAge, metadata.exitAge, metadata.initialRescueWaitingPeriod, metadata.timeBetweenRescues)
 
-@router_product.get("/brasilprev/api/product/{id_product}", tags=["Cadastro de produto"])
+@router_product.get("/api/devel/desafioTecnicoBackend/product/{id_product}", tags=["Cadastro de produto"])
 def read(id_product: str):
     product = ProductController()
     return product.read_product(id_product)
 
-@router_product.put("/brasilprev/api/product/{id_product}", tags=["Cadastro de produto"])
+@router_product.put("/api/devel/desafioTecnicoBackend/product/{id_product}", tags=["Cadastro de produto"])
 def update(id_product: str, metadata: MetadataProduct):
     product = ProductController()
     return product.update_product(id_product, metadata.name, metadata.susep, metadata.expirationDate, metadata.minValueInitialContribution, metadata.minValueExtraContribution, metadata.entryAge, metadata.exitAge, metadata.initialRescueWaitingPeriod, metadata.timeBetweenRescues)
 
 
-@router_product.delete("/brasilprev/api/product/{id_product}", tags=["Cadastro de produto"])
+@router_product.delete("/api/devel/desafioTecnicoBackend/product/{id_product}", tags=["Cadastro de produto"])
 def delete(id_product: str):
     client = ProductController()
     return client.delete_product(id_product)
