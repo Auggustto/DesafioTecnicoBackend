@@ -6,6 +6,9 @@ pipeline {
         SLACK_CHANNEL = 'botjenks'
         SLACK_CREDENTIAL_ID = credentials('SLACK_TOKEN')
     }
+
+    stages {
+
         // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
         stage('Checkout') {
             steps {
