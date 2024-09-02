@@ -9,9 +9,8 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "2223:5432"
-    command: ["sudo chmod -R 755 ./save_db/DesafioTecnicoBackend"]
     volumes:
-      - ./save_db/DesafioTecnicoBackend:/var/lib/postgresql/data 
+      - ./save_db/DesafioTecnicoBackend:/var/lib/postgresql/data
     networks:
       - app-network
 
