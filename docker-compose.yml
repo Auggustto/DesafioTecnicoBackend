@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "2223:5432"
+
+  fastapi:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      SQLALCHEMY_DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
+    depends_on:
+      - postgres
+  
+  # Configuração para rodar os testes
+  test:
+    build: .
+    command: ["./run_tests.sh", "fastapi", "pytest"]
+    environment:
+      SQLALCHEMY_DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
+    depends_on:
+      - fastapi
+      - postgres
