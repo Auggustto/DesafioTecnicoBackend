@@ -43,11 +43,11 @@ pipeline {
         // }
 
         // Derruba os containers e limpa os recursos
-        stage('Stop and Clean Up') {
-            steps {
-                sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
-            }
-        }
+        // stage('Stop and Clean Up') {
+        //     steps {
+        //         sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
+        //     }
+        // }
     }
     
     // Garante que os containers serão derrubados mesmo em caso de falha
@@ -60,7 +60,7 @@ pipeline {
         }
         always {
             slackSend(channel: "${SLACK_CHANNEL}", color: 'warning', message: "Pipeline '${env.JOB_NAME} [${env.BUILD_NUMBER}]' terminou com status: ${currentBuild.currentResult}.")
-            sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
+            // sh 'docker-compose -f $DOCKER_COMPOSE_FILE down --volumes --remove-orphans'
         }
     }
 }
