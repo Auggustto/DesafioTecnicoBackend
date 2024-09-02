@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
-        SLACK_CHANNEL = 'CypherusBotJenks'
-        SLACK_CREDENTIAL_ID = credentials('SLACK_TOKEN')
+        SLACK_CHANNEL = 'D07KN8GSNJY'
+        // SLACK_CREDENTIAL_ID = credentials('SLACK_TOKEN')
     }
 
     stages {
