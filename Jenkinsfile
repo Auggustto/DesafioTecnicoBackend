@@ -8,10 +8,10 @@ pipeline {
 
     stages {
 
-        // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.
+        // Clonae o repositório onde estão o código da aplicação e o arquivo docker-compose.yml.branch: 'main'
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git', branch: 'main'
+                git url: 'https://github.com/Auggustto/DesafioTecnicoBackend.git'
             }
         }
 
