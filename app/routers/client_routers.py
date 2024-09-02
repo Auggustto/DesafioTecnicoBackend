@@ -15,7 +15,7 @@ class MetadataClient(BaseModel):
     monthlyIncome:float
     
 
-@router_client.get("/", include_in_schema=False)
+@router_client.get("/devel", include_in_schema=False)
 def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
