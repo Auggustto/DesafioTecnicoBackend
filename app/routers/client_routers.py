@@ -15,21 +15,21 @@ class MetadataClient(BaseModel):
     monthlyIncome:float
     
 
-@router_client.get("/devel", include_in_schema=False)
+@router_client.get("/api/devel/desafioTecnicoBackend", include_in_schema=False)
 def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
-@router_client.post("/brasilprev/api/client", tags=["Cadastro de cliente"])
+@router_client.post("/api/devel/desafioTecnicoBackend/client", tags=["Cadastro de cliente"])
 def create(metada : MetadataClient):
     client = ClientController()
     return client.create_client(metada.cpf, metada.name, metada.email, metada.birthdate, metada.gender, metada.monthlyIncome)
 
-@router_client.get("/brasilprev/api/client/{cpf}", tags=["Cadastro de cliente"])
+@router_client.get("/api/devel/desafioTecnicoBackend/client/{cpf}", tags=["Cadastro de cliente"])
 def read(cpf: str):
     client = ClientController()
     return client.read_client(cpf)
 
-@router_client.put("/brasilprev/api/client/{cpf}", tags=["Cadastro de cliente"])
+@router_client.put("/api/devel/desafioTecnicoBackend/client/{cpf}", tags=["Cadastro de cliente"])
 def update(cpf: str, metadata: MetadataClient):
     client = ClientController()
     return client.update_client(cpf, metadata.cpf, metadata.name, metadata.email, metadata.birthdate, metadata.gender, metadata.monthlyIncome)
