@@ -15,6 +15,15 @@ pipeline {
             }
         }
 
+        // Validando os arquivos clonados
+        stage('Validate') {
+            steps {
+                script {
+                    sh 'ls -la'
+                }
+            }
+        }
+
         // Construindo as imagens e subindo os containers
         stage('Build and Start Containers') {
             steps{
