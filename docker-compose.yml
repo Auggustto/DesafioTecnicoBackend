@@ -10,7 +10,7 @@ services:
     ports:
       - "2223:5432"
     volumes:
-      - ./:/var/lib/postgresql/data
+      - ./save_db/DesafioTecnicoBackend:/save_db/DesafioTecnicoBackend
     networks:
       - app-network
 
